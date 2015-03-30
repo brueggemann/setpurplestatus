@@ -8,9 +8,9 @@ You need to install the following dependencies:
  * python-netaddr
 
 ## Configuration
-Create a ~/.setpurplestatusrc to configure networks and status messages
+Create a ~/.setpurplestatusrc to configure networks and status messages.
 
-    Example:
+### Example
     interfaces:
         - 'eth0'
         - 'wlan0'
