@@ -10,6 +10,7 @@ import os
 from netaddr import IPNetwork, IPAddress
 
 CONFIG_PATH = os.getenv('HOME') + '/.setpurplestatusrc'
+PURPLEREMOTE = '/usr/bin/purple-remote'
 
 if not os.path.isfile(CONFIG_PATH):
     print("Please create config file in ~/.setpurplestatusrc")
@@ -41,6 +42,6 @@ for network in config['networks']:
     for addresses in active_interfaces.values():
         for address in addresses:
             if IPAddress(address) in IPNetwork(network):
-                os.system('/usr/bin/purple-remote setstatus?message=' + config['networks'][network]['status'])
+                os.execv(PURPLEREMOTE, [PURPLEREMOTE, 'setstatus?message='+ config['networks'][network]['status']])
                 exit(0)
 exit(1)
