@@ -1,14 +1,15 @@
 # setpurplestatus
 Set the correct pidgin status message, depending on network connection
 
-## Installation:
-  You need to install the following dependencies:
-    * pyYAML
-    * python-netifaces
-    * python-netaddr
+## Installation
+You need to install the following dependencies:
+ * pyYAML
+ * python-netifaces
+ * python-netaddr
 
 ## Configuration
-  Create a ~/.setpurplestatusrc to configure networks and status messages
+Create a ~/.setpurplestatusrc to configure networks and status messages
+
     Example:
     interfaces:
         - 'eth0'
