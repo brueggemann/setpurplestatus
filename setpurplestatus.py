@@ -31,9 +31,9 @@ config = yaml.load(stream)
 active_interfaces = {}
 for interface in config['interfaces']:
     tmpifaddress = netifaces.ifaddresses(interface)
-    if 2 in tmpifaddress:
+    if netifaces.AF_INET in tmpifaddress:
         active_interfaces[interface] = []
-        for network in tmpifaddress[2]:
+        for network in tmpifaddress[netifaces.AF_INET]:
              active_interfaces[interface].append(network['addr'])
 
 # Check matching of configured networks
