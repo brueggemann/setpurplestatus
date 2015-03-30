@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # purpose: Set the correct pidgin status message, depending on network connection
 # copyright: B1 Systems GmbH <info@b1-systems.de>, 2015.
 # license: GPLv3+, http://www.gnu.org/licenses/gpl-3.0.html
@@ -28,6 +28,9 @@ if not os.path.isfile(CONFIG_PATH):
 stream = open(CONFIG_PATH, 'r')
 config = yaml.load(stream)
 
+gws = netifaces.gateways()
+print(gws['default'][netifaces.AF_INET][0])
+
 # Get active network connections
 active_interfaces = {}
 for interface in config['interfaces']:
@@ -42,6 +45,6 @@ for network in config['networks']:
     for addresses in active_interfaces.values():
         for address in addresses:
             if IPAddress(address) in IPNetwork(network):
-                os.execv(PURPLEREMOTE, [PURPLEREMOTE, 'setstatus?message='+ config['networks'][network]['status']])
+                os.execv(PURPLEREMOTE, [PURPLEREMOTE, 'setstatus?message=' + config['networks'][network]['status']])
                 exit(0)
 exit(1)
