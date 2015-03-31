@@ -38,7 +38,7 @@ for interface in config['interfaces']:
     if netifaces.AF_INET in tmpifaddress:
         active_interfaces[interface] = []
         for network in tmpifaddress[netifaces.AF_INET]:
-             active_interfaces[interface].append(network['addr'])
+            active_interfaces[interface].append(network['addr'])
 
 # Check matching of configured networks
 for network in config['networks']:
